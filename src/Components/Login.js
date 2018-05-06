@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-
+import './Login.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', password: ''};
+    this.state = { accounts: [] };
   }
+  componentDidMount(){
+    fetch('/api/logins')
+      .then(res => res.json())
+      .then(accounts => this.setState({accounts:accounts}, () => console.log('accounts fetched', accounts)));
+   }
   signUp()
   {
     console.log('this.state',this.state);
@@ -34,6 +39,12 @@ class Login extends Component {
         submit
         </button>
         </p>
+        <h5>Current account database</h5>
+        <ul>
+          {this.state.accounts.map(accounts =>
+          <li key = {accounts.firstname}> <p>{accounts.coverArt}</p><p>Title: {accounts.title}</p>Writers : {accounts.writers}</li>
+        )}
+        </ul>
       </div>
     );
   }

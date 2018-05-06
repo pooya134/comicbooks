@@ -3,7 +3,6 @@ const sequelize = new Sequelize('heroku_f8d562e61e70440', 'bb353640536722', 'f40
   host: 'us-cdbr-iron-east-04.cleardb.net',
   dialect: 'mysql',
   operatorsAliases: false,
-
   pool: {
     max: 5,
     min: 0,
@@ -32,8 +31,8 @@ const User = sequelize.define('comics', {
 // User.findAll().then(users => {
 //   console.log(users)
 // })
-// sequelize.sync().then(function (){
-//   User.findById(2).then(function(users){
-//     console.log(users.dataValues.firstname);
-//   });
-// });
+sequelize.sync().then(function (){
+  User.findById(2).then(function(users){
+    console.log(users.dataValues.firstname);
+  });
+});
