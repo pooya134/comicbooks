@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import './Login.css';
 import Comicbook from './Comicbook';
+import './style_newsfeeds.css'
 class Newsfeed extends Component {
   constructor() {
     super();
@@ -14,35 +15,62 @@ class Newsfeed extends Component {
    }
   render() {
     return (
+      <div>
+          <header>
+            <div className = "top_header"></div>
+       
+          </header>
+      <div className = "top-menu">
+             <nav>
+              <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Comic Search</a></li>
+                <li><a href="">User Profile</a></li>
+              </ul>
+            </nav>
+
+      </div>
+
       <div className="login-form">
-        <h3>Sign Up</h3>
+      <h3>Sign in</h3>
+        <p1>
         <input className ="form"
         type ="text"
         placeholder ="email"
         //onChange = {event => this.setState({email: event.target.value})}
         />
-        <p>
+        </p1>
+        <p2>
         <input className ="form"
         type ="password"
         placeholder ="password"
         //onChange = {event => this.setState({password: event.target.value})}
         />
-        </p>
-        <p>
+        </p2>
+        <p3>
         <button className ="submit-button"
         type ="button"
         //onClick = {() => this.signUp()}
         >
-        submit
+        Sign Up
         </button>
-        </p>
-        <h5>Newsfeed</h5>
+        </p3>
+        <p4>
+        <button className = "sign-in"
+        type = "button"
+        >
+        Sign in
+        </button>
+        </p4>
+        </div>
+        <div className = "newspage">
         <ul>
           {this.state.comics.map(comics => {
             return <Comicbook comics= {comics}/>;
           })}
         </ul>
       </div>
+    </div>
     );
   }
 }
